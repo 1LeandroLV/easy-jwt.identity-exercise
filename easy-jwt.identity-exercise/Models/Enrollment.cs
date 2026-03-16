@@ -1,11 +1,18 @@
 ﻿namespace easy_jwt.identity_exercise.Models
-    //denna klass anväds för att begränsa status till gilitiga värden:
 {
-    public enum Enrollment
+    public class Enrollments 
     {
-        // student har ansökt, vänta på godkännande
-        peding,
-        //student ska få tillgång till kursen enligt reglerna 
-        Approved
+        public int Id { get; set; }
+
+        public int CourseId { get; set; }
+
+        public string StudentId { get; set; } = string.Empty;
+
+        public EnrollmentStatus Status { get; set; }
+
+        public Course Course { get; set; } = null;
+
+        public AppUser Student { get; set; } = null!;
+
     }
 }
