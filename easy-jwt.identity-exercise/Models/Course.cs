@@ -4,15 +4,14 @@
     {
         public int Id { get; set; }
 
-        public string Title { get; set; } = string.Empty; //anväd för att unvika null-problem.
+        public string Title { get; set; } = string.Empty;
 
-       //detta spara id:t för den teacher som äger kursen 
-        public string TeacherID { get; set; } = string.Empty;
+        public string TeacherId { get; set; } = string.Empty;
 
-        public bool IsPublished { get; set; } //om kursen är publicerad eller inte 
+        public bool IsPublished { get; set; }
 
-        //kursen kan kopllas till en teacher-anvädare.
         public AppUser Teacher { get; set; } = null!;
-        public ICollection<Enrollments> Enrollments { get; set; } = new List<Enrollments>();
+
+        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 }

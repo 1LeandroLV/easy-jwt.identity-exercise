@@ -1,6 +1,6 @@
 ﻿namespace easy_jwt.identity_exercise.Models
 {
-    public class Enrollments 
+    public class Enrollment
     {
         public int Id { get; set; }
 
@@ -10,11 +10,8 @@
 
         public EnrollmentStatus Status { get; set; }
 
-        public Course Course { get; set; } = null;
+        public Course Course { get; set; } = null!;
 
         public AppUser Student { get; set; } = null!;
-         
-       
-
     }
 }

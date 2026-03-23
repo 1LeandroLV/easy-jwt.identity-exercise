@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens; // behövs för token validation
-using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models; // NYTT: behövs för swagger JWT authorize-knapp
 using System.Text; // NYTT: behövs för swagger JWT authorize-knapp
 
 namespace easy_jwt.identity_exercise
@@ -67,33 +65,7 @@ namespace easy_jwt.identity_exercise
             builder.Services.AddEndpointsApiExplorer();
 
             // swagger konfiguration för JWT authorize-knappen
-            builder.Services.AddSwaggerGen(options =>
-            {
-                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "Enter: Bearer YOUR_TOKEN"
-                });
-
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        new string[] {}
-                    }
-                });
-            });
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
