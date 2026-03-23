@@ -21,10 +21,10 @@ namespace easy_jwt.identity_exercise.Data
             //kör fört identitys egen dabas konfiguration
             //glömmer man den kan identity tabller sluta fungera 
             base.OnModelCreating(builder);
-
-            builder.Entity<Course>() //konfiguera modellen Course
-            .HasOne(C => c.Teacher) //en course har en teacher
-            .withMany(); //en teacher kan ha många courses 
+ 
+            builder.Entity<Course>()  //konfiguera modellen Course
+                .HasOne(c => c.Teacher)//en course har en teacher
+                .WithMany(); //en teacher kan ha många courses 
 
             builder.Entity<Enrollments>() //konfiguera modelln Enrollment
             .HasOne(e => e.Course)//en course har en course

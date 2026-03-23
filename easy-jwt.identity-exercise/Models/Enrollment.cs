@@ -13,6 +13,8 @@
         public Course Course { get; set; } = null;
 
         public AppUser Student { get; set; } = null!;
+         
+       
 
     }
 }
