@@ -83,8 +83,14 @@ namespace easy_jwt.identity_exercise
 
             // kontrollerar om användaren har rätt behörighet
             app.UseAuthorization();
-
+            //
             app.MapControllers();
+            using (var scope = app.Services.CreateScope()) 
+            {
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+                DbSeeder.SeedRolesAndAdminAsync(roleManager, userManager).Wait();
+            }
 
             app.Run();
         }
