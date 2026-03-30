@@ -1,3 +1,4 @@
+using easy_jwt.identity_exercise.Services;
 using easy_jwt.identity_exercise.Data;
 using easy_jwt.identity_exercise.Models;
 // NYTT: behövs för JWT authentication
@@ -26,6 +27,7 @@ namespace easy_jwt.identity_exercise
             // detta lägger till standardfunktioner som identity använder internt bra att ha.
             .AddDefaultTokenProviders();
 
+            builder.Services.AddScoped<TokenService>();
             //JWT Authentication konfiguration
             // appens authentication ska använda JWT bearer som standard
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
